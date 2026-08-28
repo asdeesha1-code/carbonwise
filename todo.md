@@ -117,3 +117,9 @@
 - [x] Add an accessible secondary hub for Receipt, News, Fund, and Settings
 - [x] Validate no tab clipping and confirm secondary route access
 - [x] Sync the navigation refinement to GitHub and save a checkpoint
+
+- [x] Inspect CarbonWise runtime logs and primary user flows for bugs
+- [x] Fix high-impact navigation, input, state, and mobile layout issues
+- [x] Improve perceived smoothness and interaction feedback without adding fragility
+- [x] Run final automated and visual regression checks
+- [x] Sync the bug-fix pass to GitHub and save a checkpoint
