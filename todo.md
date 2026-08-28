@@ -71,3 +71,8 @@
 - [x] Generate and integrate a Sunny / Clear Day cinematic atmosphere for CarbonWise
 - [x] Preserve readable center space for dashboard cards and dynamic typography
 - [x] Validate the sunny visual treatment and sync it to GitHub
+
+- [x] Make the Sunny / Clear Day atmosphere transparent light blue
+- [x] Restyle remaining text boxes and cards with the sunny clear-color theme
+- [x] Preserve readable contrast across dashboard, actions, and More screens
+- [x] Validate and sync the light-blue theme update to GitHub

@@ -5,7 +5,7 @@ import { haptic } from "@/lib/haptics";
 import { ScreenContainer } from "@/components/screen-container";
 import { useCarbon } from "@/lib/carbon-context";
 
-const C = { ink: "#17211F", muted: "#68736E", surface: "#FFFDFC", border: "#E6E0D8", coral: "#E56B50", mint: "#B9D9C5" };
+const C = { ink: "#173B4A", muted: "#4C6771", surface: "#F8FCFF", border: "#CFE7F5", coral: "#E56B50", mint: "#CDEFE4" };
 
 export default function ActionsScreen() {
   const { activities, recommendations } = useCarbon();

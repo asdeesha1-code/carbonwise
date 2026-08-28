@@ -7,7 +7,7 @@ import { useCarbon } from "@/lib/carbon-context";
 import { sumRange } from "@/lib/carbon";
 import { haptic } from "@/lib/haptics";
 
-const C = { ink: "#17211F", muted: "#68736E", surface: "#FFFDFC", border: "#E6E0D8", coral: "#E56B50", mint: "#B9D9C5", cream: "#F4E9E3" };
+const C = { ink: "#173B4A", muted: "#4C6771", surface: "#F8FCFF", border: "#CFE7F5", coral: "#E56B50", mint: "#CDEFE4", cream: "#EAF7FF" };
 
 export default function MoreScreen() {
   const { activities, resetDemo } = useCarbon();
