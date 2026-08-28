@@ -22,3 +22,6 @@
 - [x] Add ethical return loop with daily check-in, weekly progress, and avoided-kg framing
 - [x] Add lightweight action completion state and next-step prompt
 - [x] Validate animation performance, mobile layout, and retention flows
+
+- [ ] Create a GitHub repository for CarbonWise and push the current prototype
+- [ ] Verify the GitHub remote and document the repository workflow
