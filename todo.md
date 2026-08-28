@@ -25,3 +25,18 @@
 
 - [x] Create a GitHub repository for CarbonWise and push the current prototype
 - [x] Verify the GitHub remote and document the repository workflow
+
+- [x] Freeze the winning hackathon demo scope and success story
+- [x] Complete high-impact UI/UX and visual design polish
+- [x] Run end-to-end manual and automated QA across core flows
+- [x] Prepare the pitch, live demo script, backup recording, and submission materials
+- [x] Complete final launch-readiness checklist and judge-facing evidence
+
+- [x] Audit current CarbonWise implementation against the hackathon checklist
+- [x] Add judge-facing trust copy and correct aggregate confidence labeling
+- [x] Improve onboarding and demo reset flow for a reliable first-run experience
+- [x] Add or refine high-impact UI/UX polish for the three-minute demo
+- [x] Create a complete GitHub README and submission documentation
+- [x] Create the final demo script and judge walkthrough checklist
+- [x] Run final automated, visual, and end-to-end validation
+- [x] Sync all final changes to GitHub and save a final checkpoint

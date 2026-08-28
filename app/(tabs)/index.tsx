@@ -5,17 +5,15 @@ import { Modal, Pressable, ScrollView, StyleSheet, Text, TextInput, View } from 
 import { ScreenContainer } from "@/components/screen-container";
 import { IconSymbol } from "@/components/ui/icon-symbol";
 import { useCarbon } from "@/lib/carbon-context";
-import { Activity, calculateEmission, parseActivity, sumRange } from "@/lib/carbon";
-import { useColors } from "@/hooks/use-colors";
+import { Activity, parseActivity, sumRange } from "@/lib/carbon";
 
 const categories = ["transport", "food", "energy", "shopping"] as const;
 const accent = { coral: "#E56B50", ink: "#17211F", mint: "#B9D9C5", amber: "#E8B86A", surface: "#FFFDFC", muted: "#68736E", border: "#E6E0D8" };
 
-function Confidence({ value }: { value: string }) { return <View style={[styles.confidence, value === "HIGH" ? styles.high : value === "MEDIUM" ? styles.medium : styles.low]}><Text style={styles.confidenceText}>{value === "HIGH" ? "Measured" : value === "MEDIUM" ? "Estimated" : "Assumed"}</Text></View>; }
+function Confidence({ value }: { value: string }) { return <View style={[styles.confidence, value === "HIGH" ? styles.high : value === "MEDIUM" || value === "MIXED" ? styles.medium : styles.low]}><Text style={styles.confidenceText}>{value === "HIGH" ? "Measured" : value === "MEDIUM" ? "Estimated" : value === "MIXED" ? "Mixed confidence" : "Assumed"}</Text></View>; }
 function Why({ item }: { item: { quantity: number; unit: string; emissionFactor: number; estimatedCO2eLow: number; estimatedCO2eHigh: number; confidence: string; source: string } }) { return <View style={styles.why}><Text style={styles.whyTitle}>Why this estimate?</Text><Text style={styles.whyFormula}>{item.quantity} {item.unit} × {item.emissionFactor.toFixed(2)} kg/{item.unit}</Text><Text style={styles.whyCopy}>Range: {item.estimatedCO2eLow.toFixed(1)}–{item.estimatedCO2eHigh.toFixed(1)} kg CO2e · {item.confidence} confidence</Text><Text style={styles.whySource}>{item.source}</Text></View>; }
 
 export default function HomeScreen() {
-  const colors = useColors();
   const { activities, addActivity, recommendations } = useCarbon();
   const [showAdd, setShowAdd] = useState(false);
   const [text, setText] = useState("");
@@ -23,6 +21,7 @@ export default function HomeScreen() {
   const [expanded, setExpanded] = useState<string | null>(null);
   const [checkedIn, setCheckedIn] = useState(false);
   const total = useMemo(() => sumRange(activities), [activities]);
+  const aggregateConfidence = activities.length === 0 ? "LOW" : activities.every((item) => item.confidence === "HIGH") ? "HIGH" : activities.every((item) => item.confidence === "LOW") ? "LOW" : "MIXED";
   const categoryTotals = categories.map((category) => ({ category, value: activities.filter((item) => item.category === category).reduce((sum, item) => sum + item.estimatedCO2eHigh, 0) }));
   const maxCategory = Math.max(...categoryTotals.map((item) => item.value), 1);
   const close = () => { setShowAdd(false); setReview(null); setText(""); };
@@ -31,7 +30,7 @@ export default function HomeScreen() {
     <ScreenContainer containerClassName="bg-background" className="px-5">
       <ScrollView showsVerticalScrollIndicator={false} contentContainerStyle={styles.scroll}>
         <View style={styles.header}><View><Text style={styles.eyebrow}>TUESDAY, AUG 28</Text><Text style={styles.title}>Good morning, Maya</Text></View><View style={styles.avatar}><Text style={styles.avatarText}>M</Text></View></View>
-        <View style={styles.heroCard}><View style={styles.heroTop}><Text style={styles.cardEyebrow}>TODAY'S FOOTPRINT</Text><Confidence value={activities[0]?.confidence ?? "LOW"} /></View><View style={styles.heroMetricRow}><AnimatedMetric value={total.low} suffix={`–${total.high.toFixed(1)}`} style={styles.heroMetric} /><Text style={styles.heroUnit}>kg CO2e</Text></View><Text style={styles.heroCopy}>You are tracking close to your 6.0 kg daily budget.</Text><View style={styles.budgetTrack}><View style={[styles.budgetFill, { width: `${Math.min((total.high / 6) * 100, 100)}%` }]} /></View><View style={styles.budgetRow}><Text style={styles.muted}>Daily budget</Text><Text style={styles.budgetValue}>{Math.round((total.high / 6) * 100)}% used</Text></View></View>
+        <View style={styles.heroCard}><View style={styles.heroTop}><Text style={styles.cardEyebrow}>TODAY&apos;S FOOTPRINT</Text><Confidence value={aggregateConfidence} /></View><View style={styles.heroMetricRow}><AnimatedMetric value={total.low} suffix={`–${total.high.toFixed(1)}`} style={styles.heroMetric} /><Text style={styles.heroUnit}>kg CO2e</Text></View><Text style={styles.heroCopy}>You are tracking close to your 6.0 kg daily budget.</Text><View style={styles.budgetTrack}><View style={[styles.budgetFill, { width: `${Math.min((total.high / 6) * 100, 100)}%` }]} /></View><View style={styles.budgetRow}><Text style={styles.muted}>Daily budget</Text><Text style={styles.budgetValue}>{Math.round((total.high / 6) * 100)}% used</Text></View></View>
         <View style={styles.sectionHeader}><Text style={styles.sectionTitle}>Where it comes from</Text><Text style={styles.link}>This week</Text></View>
         <View style={styles.card}>{categoryTotals.map(({ category, value }) => <View key={category} style={styles.barRow}><Text style={styles.barLabel}>{category[0].toUpperCase() + category.slice(1)}</Text><View style={styles.barTrack}><View style={[styles.barFill, { width: `${Math.max((value / maxCategory) * 100, 5)}%`, backgroundColor: category === "transport" ? accent.coral : category === "food" ? accent.mint : accent.amber }]} /></View><Text style={styles.barValue}>{value.toFixed(1)}</Text></View>)}<Text style={styles.legend}>Ranges shown in kg CO2e · measured, estimated, or assumed</Text></View>
         <View style={styles.sectionHeader}><Text style={styles.sectionTitle}>Weekly signal</Text><Text style={styles.link}>Last 7 days</Text></View>
