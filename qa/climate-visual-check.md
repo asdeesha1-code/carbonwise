@@ -15,3 +15,5 @@ The transparent light-blue theme is visible and the More screen now uses soft bl
 The refined windy-day theme shows pale blue transparent atmosphere, blue-white cards, teal typography, and coral action accents. The Actions screen captured successfully at 390×844 and remained readable; More and Time Machine capture attempts failed in this batch while the preview server stayed running. Automated tests, TypeScript, and lint pass.
 
 After removing the cinematic image layer, the Actions and More screens retain a clean cool-tone atmospheric treatment with light-blue content surfaces, readable teal text, and subtle animated climate accents. Both routes captured successfully at 390×844 after preview recovery.
+
+The climate atmosphere is fully removed from ScreenContainer. Actions and More now render on a clean solid pale light-blue background at 390×844; cards and text remain readable, navigation remains intact, and no animated background layer is visible.

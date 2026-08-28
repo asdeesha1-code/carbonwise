@@ -86,3 +86,7 @@
 - [x] Replace it with a clean transparent cool-tone light-blue atmosphere
 - [x] Preserve subtle climate motion without visual clutter
 - [x] Validate readability and sync the cool-tone background replacement
+
+- [x] Remove the animated climate atmosphere from the app background
+- [x] Apply a clean solid light-blue app surface
+- [x] Validate readability and sync the background-free refinement

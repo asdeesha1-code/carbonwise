@@ -2,7 +2,6 @@ import { View, type ViewProps } from "react-native";
 import { SafeAreaView, type Edge } from "react-native-safe-area-context";
 
 import { cn } from "@/lib/utils";
-import { ClimateAtmosphere } from "@/components/climate-atmosphere";
 
 export interface ScreenContainerProps extends ViewProps {
   /**
@@ -57,7 +56,6 @@ export function ScreenContainer({
       )}
       {...props}
     >
-      <ClimateAtmosphere />
       <SafeAreaView
         edges={edges}
         className={cn("flex-1", safeAreaClassName)}
