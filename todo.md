@@ -40,3 +40,9 @@
 - [x] Create the final demo script and judge walkthrough checklist
 - [x] Run final automated, visual, and end-to-end validation
 - [x] Sync all final changes to GitHub and save a final checkpoint
+
+- [x] Add richer but restrained screen, card, chart, and success animations
+- [x] Add a distinctive CarbonWise hero feature: Impact Replay with a shareable before/after story
+- [x] Add accessible reduced-motion behavior and keep all animations performant
+- [x] Validate the hero feature and visual polish on the full judge demo path
+- [x] Sync the animation and hero-feature upgrade to GitHub and save a checkpoint
