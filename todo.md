@@ -111,3 +111,9 @@
 - [x] Implement applicable requirements from pasted_content.txt
 - [x] Validate the applied content changes across mobile flows
 - [x] Sync the applied-content update to GitHub and save a checkpoint
+
+- [x] Consolidate the mobile navigation into Today, History, Play, Weather, and Me
+- [x] Add visible Today shortcuts for Twin, Time Machine, and Actions
+- [x] Add an accessible secondary hub for Receipt, News, Fund, and Settings
+- [x] Validate no tab clipping and confirm secondary route access
+- [x] Sync the navigation refinement to GitHub and save a checkpoint
