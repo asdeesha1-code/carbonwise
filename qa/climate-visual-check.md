@@ -5,3 +5,5 @@ The 390×844 preview shows the branded CarbonWise intro overlay appearing before
 A later recapture attempt could not load because the managed preview server exited with code -1 during startup. The code-level TypeScript check had previously passed before this visual recapture, so restart the managed Expo service before continuing visual verification.
 
 After restart, the climate color shift, sun, and haze are visible on Today and More. The global air-quality tag overlaps the More-screen subtitle because screen content is not uniformly opaque, so remove that tag from the shared background layer and rely on the intentionally exaggerated haze/color state to communicate the visual air-quality change without obscuring copy.
+
+The latest mobile captures show the blue sky and warm haze are now clearly visible behind More and Actions, and the tab icons have colored active shells. The root route screenshot failed during this capture while the two secondary routes succeeded; the managed server remained running and the visual content on captured routes was readable.

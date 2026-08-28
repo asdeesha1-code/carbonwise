@@ -61,3 +61,9 @@
 - [x] Respect reduced-motion preferences and keep the climate layer non-blocking
 - [x] Validate the intro, weather animation, air-quality states, and full demo flow
 - [x] Sync the climate animation upgrade to GitHub and save a checkpoint
+
+- [x] Make the climate atmosphere visibly blue with readable air-quality states
+- [x] Upgrade tab and in-page icons into a cohesive visual icon system
+- [x] Add polished icon touch feedback without reducing accessibility
+- [x] Validate the blue background and icons across mobile screens
+- [x] Sync the blue-sky and icon polish to GitHub and save a checkpoint

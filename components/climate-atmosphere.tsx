@@ -4,7 +4,7 @@ import { useCarbon } from "@/lib/carbon-context";
 import { sumRange } from "@/lib/carbon";
 import { useMotionPreference } from "@/hooks/use-motion-preference";
 
-const C = { sky: "#DDEDE9", cloud: "#FFFFFF", coral: "#E56B50", ink: "#17211F", mint: "#B9D9C5", haze: "#A69D93" };
+const C = { sky: "#83C9F1", cloud: "#FFFFFF", coral: "#E56B50", ink: "#17211F", mint: "#B9D9C5", haze: "#A69D93" };
 
 export function ClimateAtmosphere() {
   const { activities } = useCarbon();
@@ -25,7 +25,8 @@ export function ClimateAtmosphere() {
   }, [air.opacity, cloudOne, cloudTwo, reduceMotion, shimmer]);
 
   return <View pointerEvents="none" style={[StyleSheet.absoluteFill, styles.atmosphere]}>
-    <View style={[styles.sky, { backgroundColor: air.tint, opacity: air.opacity }]} />
+    <View style={[styles.sky, { backgroundColor: C.sky, opacity: 0.92 }]} />
+    <View style={[styles.airWash, { backgroundColor: air.tint, opacity: air.opacity }]} />
     <Animated.View style={[styles.haze, { backgroundColor: air.tint, opacity: reduceMotion ? air.opacity : shimmer }]} />
     <View style={styles.sun}><View style={styles.sunCore} /><View style={[styles.sunRing, { borderColor: air.tint }]} /></View>
     <Animated.View style={[styles.cloud, styles.cloudA, { transform: [{ translateX: cloudOne }] }]}><View style={styles.cloudPuffSmall} /><View style={styles.cloudPuffLarge} /></Animated.View>
@@ -34,4 +35,4 @@ export function ClimateAtmosphere() {
   </View>;
 }
 
-const styles = StyleSheet.create({ atmosphere: { zIndex: 0 }, sky: { ...StyleSheet.absoluteFillObject }, haze: { position: "absolute", left: -50, right: -50, top: 80, height: 180, borderRadius: 120, transform: [{ rotate: "-8deg" }] }, sun: { position: "absolute", top: 28, right: 26, width: 56, height: 56, alignItems: "center", justifyContent: "center" }, sunCore: { width: 26, height: 26, borderRadius: 13, backgroundColor: "#E8B86A" }, sunRing: { position: "absolute", width: 46, height: 46, borderRadius: 23, borderWidth: 1, opacity: 0.35 }, cloud: { position: "absolute", flexDirection: "row", alignItems: "flex-end", opacity: 0.28 }, cloudA: { top: 82, left: -70 }, cloudB: { top: 146, right: -70 }, cloudPuffSmall: { width: 34, height: 20, borderRadius: 18, backgroundColor: C.cloud, marginHorizontal: -5 }, cloudPuffLarge: { width: 65, height: 30, borderRadius: 24, backgroundColor: C.cloud }, weatherNote: { position: "absolute", bottom: 8, right: 20, color: "rgba(23,33,31,0.45)", fontSize: 9, fontWeight: "700" } });
+const styles = StyleSheet.create({ atmosphere: { zIndex: 0 }, sky: { ...StyleSheet.absoluteFillObject }, airWash: { ...StyleSheet.absoluteFillObject }, haze: { position: "absolute", left: -50, right: -50, top: 80, height: 180, borderRadius: 120, transform: [{ rotate: "-8deg" }] }, sun: { position: "absolute", top: 28, right: 26, width: 56, height: 56, alignItems: "center", justifyContent: "center" }, sunCore: { width: 26, height: 26, borderRadius: 13, backgroundColor: "#E8B86A" }, sunRing: { position: "absolute", width: 46, height: 46, borderRadius: 23, borderWidth: 1, opacity: 0.35 }, cloud: { position: "absolute", flexDirection: "row", alignItems: "flex-end", opacity: 0.68 }, cloudA: { top: 82, left: -70 }, cloudB: { top: 146, right: -70 }, cloudPuffSmall: { width: 34, height: 20, borderRadius: 18, backgroundColor: C.cloud, marginHorizontal: -5 }, cloudPuffLarge: { width: 65, height: 30, borderRadius: 24, backgroundColor: C.cloud }, weatherNote: { position: "absolute", bottom: 8, right: 20, color: "rgba(23,33,31,0.45)", fontSize: 9, fontWeight: "700" } });
