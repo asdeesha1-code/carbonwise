@@ -15,3 +15,10 @@
 - [x] Methodology and privacy explanation screen
 - [x] Mobile layout validation and automated tests
 - [x] Final prototype checkpoint and delivery link
+
+- [x] Add subtle entrance and value-update animations to dashboard metrics and charts
+- [x] Add purposeful press feedback and haptic feedback for primary actions
+- [x] Add animated Time Machine deltas and accessible reduced-motion fallback
+- [x] Add ethical return loop with daily check-in, weekly progress, and avoided-kg framing
+- [x] Add lightweight action completion state and next-step prompt
+- [x] Validate animation performance, mobile layout, and retention flows
