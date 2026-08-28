@@ -23,5 +23,5 @@
 - [x] Add lightweight action completion state and next-step prompt
 - [x] Validate animation performance, mobile layout, and retention flows
 
-- [ ] Create a GitHub repository for CarbonWise and push the current prototype
-- [ ] Verify the GitHub remote and document the repository workflow
+- [x] Create a GitHub repository for CarbonWise and push the current prototype
+- [x] Verify the GitHub remote and document the repository workflow
