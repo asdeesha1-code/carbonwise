@@ -54,3 +54,10 @@
 - [x] Add distinctive CarbonWise visual accent system without overwhelming the user
 - [x] Validate interactions, popups, accessibility, and mobile performance
 - [x] Sync the playful interaction upgrade to GitHub and save a checkpoint
+
+- [x] Add animated climate sky background with clouds, sun, haze, and weather motion
+- [x] Add exaggerated visual air-quality state tied to footprint changes with clear prototype labeling
+- [x] Add animated CarbonWise logo and app-name intro before the main details
+- [x] Respect reduced-motion preferences and keep the climate layer non-blocking
+- [x] Validate the intro, weather animation, air-quality states, and full demo flow
+- [x] Sync the climate animation upgrade to GitHub and save a checkpoint

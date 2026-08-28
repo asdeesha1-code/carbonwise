@@ -18,6 +18,7 @@ import type { EdgeInsets, Metrics, Rect } from "react-native-safe-area-context";
 
 import { trpc, createTRPCClient } from "@/lib/trpc";
 import { CarbonProvider } from "@/lib/carbon-context";
+import { BrandIntro } from "@/components/brand-intro";
 import { initManusRuntime, subscribeSafeAreaInsets } from "@/lib/_core/manus-runtime";
 
 const DEFAULT_WEB_INSETS: EdgeInsets = { top: 0, right: 0, bottom: 0, left: 0 };
@@ -33,6 +34,7 @@ export default function RootLayout() {
 
   const [insets, setInsets] = useState<EdgeInsets>(initialInsets);
   const [frame, setFrame] = useState<Rect>(initialFrame);
+  const [showBrandIntro, setShowBrandIntro] = useState(true);
 
   // Initialize Manus runtime for cookie injection from parent container
   useEffect(() => {
@@ -92,6 +94,7 @@ export default function RootLayout() {
             <Stack.Screen name="oauth/callback" />
           </Stack>
           <StatusBar style="auto" />
+          {showBrandIntro && <BrandIntro onDone={() => setShowBrandIntro(false)} />}
         </QueryClientProvider>
       </trpc.Provider>
       </GestureHandlerRootView>

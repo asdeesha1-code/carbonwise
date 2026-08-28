@@ -1,0 +1,7 @@
+# Climate Visual Verification
+
+The 390×844 preview shows the branded CarbonWise intro overlay appearing before route content, confirming the requested pre-detail experience is wired. The current icon image reads as a dark rounded square in the intro at this scale, so the next polish pass should add a stronger high-contrast climate mark inside the intro logo frame. The screenshot also confirms that the intro is intentionally shown before the dashboard and More content.
+
+A later recapture attempt could not load because the managed preview server exited with code -1 during startup. The code-level TypeScript check had previously passed before this visual recapture, so restart the managed Expo service before continuing visual verification.
+
+After restart, the climate color shift, sun, and haze are visible on Today and More. The global air-quality tag overlaps the More-screen subtitle because screen content is not uniformly opaque, so remove that tag from the shared background layer and rely on the intentionally exaggerated haze/color state to communicate the visual air-quality change without obscuring copy.
