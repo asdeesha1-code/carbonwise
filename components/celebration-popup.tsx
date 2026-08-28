@@ -4,9 +4,9 @@ import { useMotionPreference } from "@/hooks/use-motion-preference";
 
 const C = { ink: "#17211F", coral: "#E56B50", mint: "#B9D9C5", cream: "#FFF8F4", muted: "#68736E" };
 
-type Props = { visible: boolean; eyebrow: string; title: string; body: string; accent?: string; actionLabel?: string; onClose: () => void };
+type Props = { visible: boolean; eyebrow: string; title: string; body: string; accent?: string; tone?: "positive" | "concern"; actionLabel?: string; onClose: () => void };
 
-export function CelebrationPopup({ visible, eyebrow, title, body, accent = C.coral, actionLabel = "Keep exploring", onClose }: Props) {
+export function CelebrationPopup({ visible, eyebrow, title, body, accent = C.coral, tone = "positive", actionLabel = "Keep exploring", onClose }: Props) {
   const { reduceMotion } = useMotionPreference();
   const opacity = useRef(new Animated.Value(0)).current;
   const scale = useRef(new Animated.Value(reduceMotion ? 1 : 0.92)).current;
@@ -24,8 +24,8 @@ export function CelebrationPopup({ visible, eyebrow, title, body, accent = C.cor
   return <Modal visible={visible} transparent animationType="none" onRequestClose={onClose} accessibilityViewIsModal>
     <View style={styles.backdrop}>
       <Animated.View style={[styles.card, { opacity, transform: [{ scale }] }]} accessibilityRole="alert">
-        <View style={[styles.orb, { backgroundColor: accent }]}><Text style={styles.orbText}>✦</Text></View>
-        <View style={styles.confetti}><Text style={[styles.confettiText, { color: C.mint }]}>•</Text><Text style={[styles.confettiText, { color: C.coral }]}>✦</Text><Text style={[styles.confettiText, { color: "#E8B86A" }]}>•</Text></View>
+        <View style={[styles.orb, { backgroundColor: accent }]}><Text style={styles.orbText}>{tone === "positive" ? "✦" : "☁"}</Text></View>
+        {tone === "positive" && <View style={styles.confetti}><Text style={[styles.confettiText, { color: C.mint }]}>•</Text><Text style={[styles.confettiText, { color: C.coral }]}>✦</Text><Text style={[styles.confettiText, { color: "#E8B86A" }]}>•</Text></View>}
         <Text style={styles.eyebrow}>{eyebrow}</Text>
         <Text style={styles.title}>{title}</Text>
         <Text style={styles.body}>{body}</Text>

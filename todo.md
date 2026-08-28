@@ -123,3 +123,8 @@
 - [x] Improve perceived smoothness and interaction feedback without adding fragility
 - [x] Run final automated and visual regression checks
 - [x] Sync the bug-fix pass to GitHub and save a checkpoint
+
+- [x] Make activity-save popup celebrate lower-impact choices with a nice message
+- [x] Make higher-impact activity popup use a gentle sad remark plus actionable advice
+- [x] Validate adaptive popup behavior for both positive and harmful activities
+- [x] Sync the adaptive notification update to GitHub and save a checkpoint
