@@ -76,3 +76,8 @@
 - [x] Restyle remaining text boxes and cards with the sunny clear-color theme
 - [x] Preserve readable contrast across dashboard, actions, and More screens
 - [x] Validate and sync the light-blue theme update to GitHub
+
+- [x] Refine CarbonWise toward a transparent pale-blue windy-day background
+- [x] Restyle text boxes and cards with airy blue-white surfaces and teal typography
+- [x] Make cloud movement feel wind-swept while preserving readability
+- [x] Validate and sync the windy-day theme refinement
