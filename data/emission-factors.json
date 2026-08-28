@@ -1,0 +1,19 @@
+{
+  "transport": [
+    { "activityType": "car", "factorPerUnit": 0.19, "unit": "km", "source": "Approximate passenger-car lifecycle factor; methodology-dependent public-factor style estimate", "confidenceDefault": "MEDIUM" },
+    { "activityType": "bus", "factorPerUnit": 0.08, "unit": "km", "source": "Approximate bus passenger-kilometre factor; methodology-dependent public-factor style estimate", "confidenceDefault": "MEDIUM" },
+    { "activityType": "metro", "factorPerUnit": 0.035, "unit": "km", "source": "Approximate electric rail passenger-kilometre factor; methodology-dependent public-factor style estimate", "confidenceDefault": "MEDIUM" },
+    { "activityType": "bike", "factorPerUnit": 0.006, "unit": "km", "source": "Operational and embodied cycling estimate; methodology-dependent public-factor style estimate", "confidenceDefault": "LOW" }
+  ],
+  "food": [
+    { "activityType": "beef meal", "factorPerUnit": 5.5, "unit": "serving", "source": "Approximate food lifecycle category factor; methodology-dependent public-factor style estimate", "confidenceDefault": "LOW" },
+    { "activityType": "chicken meal", "factorPerUnit": 1.8, "unit": "serving", "source": "Approximate food lifecycle category factor; methodology-dependent public-factor style estimate", "confidenceDefault": "LOW" },
+    { "activityType": "plant meal", "factorPerUnit": 0.7, "unit": "serving", "source": "Approximate food lifecycle category factor; methodology-dependent public-factor style estimate", "confidenceDefault": "LOW" }
+  ],
+  "energy": [
+    { "activityType": "electricity", "factorPerUnit": 0.7, "unit": "kWh", "source": "Approximate grid electricity factor; methodology-dependent public-factor style estimate", "confidenceDefault": "LOW" }
+  ],
+  "shopping": [
+    { "activityType": "clothing", "factorPerUnit": 8, "unit": "item", "source": "Approximate product-category lifecycle factor; methodology-dependent public-factor style estimate", "confidenceDefault": "LOW" }
+  ]
+}
