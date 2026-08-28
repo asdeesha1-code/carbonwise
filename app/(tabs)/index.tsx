@@ -1,5 +1,6 @@
 import { useMemo, useState } from "react";
 import { AnimatedMetric } from "@/components/animated-metric";
+import { CelebrationPopup } from "@/components/celebration-popup";
 import { haptic } from "@/lib/haptics";
 import { Modal, Pressable, ScrollView, StyleSheet, Text, TextInput, View } from "react-native";
 import { ScreenContainer } from "@/components/screen-container";
@@ -20,12 +21,13 @@ export default function HomeScreen() {
   const [review, setReview] = useState<ReturnType<typeof parseActivity> | null>(null);
   const [expanded, setExpanded] = useState<string | null>(null);
   const [checkedIn, setCheckedIn] = useState(false);
+  const [showSaved, setShowSaved] = useState(false);
   const total = useMemo(() => sumRange(activities), [activities]);
   const aggregateConfidence = activities.length === 0 ? "LOW" : activities.every((item) => item.confidence === "HIGH") ? "HIGH" : activities.every((item) => item.confidence === "LOW") ? "LOW" : "MIXED";
   const categoryTotals = categories.map((category) => ({ category, value: activities.filter((item) => item.category === category).reduce((sum, item) => sum + item.estimatedCO2eHigh, 0) }));
   const maxCategory = Math.max(...categoryTotals.map((item) => item.value), 1);
   const close = () => { setShowAdd(false); setReview(null); setText(""); };
-  const save = () => { if (!review) return; const item: Activity = { id: `activity-${Date.now()}`, timestamp: new Date().toISOString(), ...review }; addActivity(item); haptic.success(); close(); };
+  const save = () => { if (!review) return; const item: Activity = { id: `activity-${Date.now()}`, timestamp: new Date().toISOString(), ...review }; addActivity(item); haptic.success(); close(); setShowSaved(true); };
   return (
     <ScreenContainer containerClassName="bg-background" className="px-5">
       <ScrollView showsVerticalScrollIndicator={false} contentContainerStyle={styles.scroll}>
@@ -42,6 +44,7 @@ export default function HomeScreen() {
         <View style={styles.returnCard}><View style={styles.returnHeader}><View><Text style={styles.returnEyebrow}>YOUR WEEKLY RHYTHM</Text><Text style={styles.returnTitle}>{checkedIn ? "Nice work — today is logged." : "One small check-in keeps the signal fresh."}</Text></View><Text style={styles.returnCount}>{checkedIn ? "1/1" : "0/1"}</Text></View><View style={styles.dayDots}>{["M", "T", "W", "T", "F", "S", "T"].map((day, index) => <View key={`${day}-${index}`} style={styles.dayItem}><View style={[styles.dayDot, (index < 5 || (index === 5 && checkedIn)) && styles.dayDotDone]}><Text style={[styles.dayDotText, (index < 5 || (index === 5 && checkedIn)) && styles.dayDotTextDone]}>{index < 5 || (index === 5 && checkedIn) ? "✓" : ""}</Text></View><Text style={styles.dayLabel}>{day}</Text></View>)}</View>{!checkedIn && <Pressable onPress={() => { setCheckedIn(true); haptic.success(); }} style={({ pressed }) => [styles.checkInButton, pressed && { opacity: 0.8 }]}><Text style={styles.checkInText}>Mark today as checked in</Text></Pressable>}</View>
         <Pressable onPress={() => { haptic.light(); setShowAdd(true); }} style={({ pressed }) => [styles.addButton, pressed && { transform: [{ scale: 0.97 }], opacity: 0.9 }]}><IconSymbol name="plus" color="#FFFFFF" size={22} /><Text style={styles.addButtonText}>Add activity</Text></Pressable>
       </ScrollView>
+      <CelebrationPopup visible={showSaved} eyebrow="SIGNAL CAPTURED" title="Nice, that counts." body="Your Carbon Twin just got a little clearer. Keep logging the moments that shape your week." actionLabel="See my signal" onClose={() => setShowSaved(false)} />
       <Modal visible={showAdd} animationType="slide" transparent onRequestClose={close}><View style={styles.modalBackdrop}><View style={styles.modal}><View style={styles.modalHandle} /><Text style={styles.modalEyebrow}>SMART ACTIVITY INPUT</Text><Text style={styles.modalTitle}>{review ? "Review your estimate" : "What did you do?"}</Text>{!review ? <><Text style={styles.modalCopy}>Use your own words. CarbonWise will turn them into a measurable activity before anything is saved.</Text><TextInput value={text} onChangeText={setText} placeholder="e.g. 15 km by bus" placeholderTextColor="#9BA39E" style={styles.input} autoFocus returnKeyType="done" /><View style={styles.exampleRow}><Text style={styles.exampleLabel}>Try</Text><Text style={styles.example}>“one plant meal”</Text><Text style={styles.example}>“4 kWh electricity”</Text></View><Pressable onPress={() => setReview(parseActivity(text))} style={({ pressed }) => [styles.primaryButton, pressed && { opacity: 0.85 }]}><Text style={styles.primaryButtonText}>Review estimate</Text></Pressable></> : <><View style={styles.reviewCard}><View style={styles.reviewRow}><Text style={styles.reviewLabel}>Detected</Text><Text style={styles.reviewValue}>{review.quantity} {review.unit} · {review.activityType}</Text></View><View style={styles.reviewRow}><Text style={styles.reviewLabel}>CO2e range</Text><Text style={styles.reviewMetric}>{review.estimatedCO2eLow.toFixed(1)}–{review.estimatedCO2eHigh.toFixed(1)} kg</Text></View><View style={styles.reviewRow}><Text style={styles.reviewLabel}>Confidence</Text><Confidence value={review.confidence} /></View><Why item={review} /></View><Pressable onPress={save} style={({ pressed }) => [styles.primaryButton, pressed && { opacity: 0.85 }]}><Text style={styles.primaryButtonText}>Save activity</Text></Pressable><Pressable onPress={() => setReview(null)} style={styles.secondaryButton}><Text style={styles.secondaryButtonText}>Edit input</Text></Pressable></>}<Pressable onPress={close} style={styles.closeButton}><Text style={styles.closeText}>Cancel</Text></Pressable></View></View></Modal>
     </ScreenContainer>
   );

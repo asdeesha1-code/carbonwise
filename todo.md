@@ -46,3 +46,11 @@
 - [x] Add accessible reduced-motion behavior and keep all animations performant
 - [x] Validate the hero feature and visual polish on the full judge demo path
 - [x] Sync the animation and hero-feature upgrade to GitHub and save a checkpoint
+
+- [x] Add reusable playful motion and popup primitives with reduced-motion support
+- [x] Add animated dashboard interactions and a celebratory activity-save moment
+- [x] Add interactive Time Machine slider feedback and scenario reveal animation
+- [x] Add playful Action completion popup and Impact Replay reveal state
+- [x] Add distinctive CarbonWise visual accent system without overwhelming the user
+- [x] Validate interactions, popups, accessibility, and mobile performance
+- [x] Sync the playful interaction upgrade to GitHub and save a checkpoint
