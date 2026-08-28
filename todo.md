@@ -90,3 +90,19 @@
 - [x] Remove the animated climate atmosphere from the app background
 - [x] Apply a clean solid light-blue app surface
 - [x] Validate readability and sync the background-free refinement
+
+- [x] Define safe local fallbacks and live-integration boundaries for weather, news, payments, reminders, and widgets
+- [x] Build a climate-aware first screen with location, weather, hourly forecast, and day/night mode
+- [x] Add climate-positive/negative feedback with soft reminders and celebratory success states
+- [x] Add animated white clouds and polluted grey state when footprint is above the normal range
+- [x] Add weekly, monthly, and yearly carbon history
+- [x] Add understandable climate news cards with source and freshness labels
+- [x] Add India location weather explorer with interactive city cards
+- [x] Add climate fund presentation and contribution/payment-history prototype surfaces
+- [x] Add CarbonWise learning game to navigation
+- [x] Add account and settings surface to navigation
+- [x] Add daily activity reminders and retention-friendly progress loop
+- [x] Add exit confirmation where the platform allows it and widget-style quick access fallback
+- [x] Add smooth scrolling, transitions, card motion, typography, shadows, and layered depth
+- [x] Validate expanded mobile experience and document production integration requirements
+- [x] Sync the expanded CarbonWise prototype to GitHub and save a checkpoint

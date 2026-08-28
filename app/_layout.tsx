@@ -5,7 +5,7 @@ import { StatusBar } from "expo-status-bar";
 import { useCallback, useEffect, useMemo, useState } from "react";
 import { GestureHandlerRootView } from "react-native-gesture-handler";
 import "react-native-reanimated";
-import { Platform } from "react-native";
+import { Alert, BackHandler, Platform } from "react-native";
 import "@/lib/_core/nativewind-pressable";
 import { ThemeProvider } from "@/lib/theme-provider";
 import {
@@ -44,6 +44,21 @@ export default function RootLayout() {
   const handleSafeAreaUpdate = useCallback((metrics: Metrics) => {
     setInsets(metrics.insets);
     setFrame(metrics.frame);
+  }, []);
+
+  useEffect(() => {
+    if (Platform.OS === "android") {
+      const subscription = BackHandler.addEventListener("hardwareBackPress", () => {
+        Alert.alert("Leave CarbonWise?", "Your local activity log will stay safe on this device.", [{ text: "Stay", style: "cancel" }, { text: "Exit", style: "destructive", onPress: () => BackHandler.exitApp() }]);
+        return true;
+      });
+      return () => subscription.remove();
+    }
+    if (Platform.OS === "web") {
+      const confirmClose = (event: BeforeUnloadEvent) => { event.preventDefault(); event.returnValue = ""; };
+      window.addEventListener("beforeunload", confirmClose);
+      return () => window.removeEventListener("beforeunload", confirmClose);
+    }
   }, []);
 
   useEffect(() => {
