@@ -13,3 +13,5 @@ The Sunny / Clear Day asset is integrated as a full-bleed background layer with 
 The transparent light-blue theme is visible and the More screen now uses soft blue surfaces, teal text, and a deep blue-green Impact Replay card with strong contrast. A visual capture succeeded for More; root, Time Machine, and Actions captures failed during this batch, likely while the animated intro/route bundle was settling. The preview remained running and TypeScript reported no errors.
 
 The refined windy-day theme shows pale blue transparent atmosphere, blue-white cards, teal typography, and coral action accents. The Actions screen captured successfully at 390×844 and remained readable; More and Time Machine capture attempts failed in this batch while the preview server stayed running. Automated tests, TypeScript, and lint pass.
+
+After removing the cinematic image layer, the Actions and More screens retain a clean cool-tone atmospheric treatment with light-blue content surfaces, readable teal text, and subtle animated climate accents. Both routes captured successfully at 390×844 after preview recovery.

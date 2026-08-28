@@ -81,3 +81,8 @@
 - [x] Restyle text boxes and cards with airy blue-white surfaces and teal typography
 - [x] Make cloud movement feel wind-swept while preserving readability
 - [x] Validate and sync the windy-day theme refinement
+
+- [x] Remove the cinematic weather image background layer
+- [x] Replace it with a clean transparent cool-tone light-blue atmosphere
+- [x] Preserve subtle climate motion without visual clutter
+- [x] Validate readability and sync the cool-tone background replacement
